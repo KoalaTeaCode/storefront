@@ -1,0 +1,19 @@
+{
+  "name": "storefront",
+  "description": "",
+  "directory": "public/bower_components",
+  "main": "",
+  "authors": [
+    "Keith Holliday <keithrholliday@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
