@@ -31,7 +31,7 @@ class Listing extends Model
     $this->address = $address;
 
     try {
-    $geocode = Geocoder::geocode($address);
+      $geocode = Geocoder::geocode($address);
       // The GoogleMapsProvider will return a result
       // var_dump($geocode);
       $latitude = $geocode->getLatitude();

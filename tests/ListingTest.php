@@ -57,4 +57,6 @@ class ListingTest extends TestCase
       // @TODO: maybe check for does not contain instead.
       $this->assertEmpty($listings);
     }
+
+    //@TODO: Should address listings be unique??
 }

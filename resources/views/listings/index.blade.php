@@ -9,8 +9,10 @@
     </div>
     <div class="col-md-4 col-md-offset-4 text-center banner-title">
       <h2>Listings</h2>
-      <input class="col-md-12 main-search" placeholder="Search Cities and Neighborhoods">
-      <a href="" class="btn btn-primary major-callout white main-search-btn">Search</a>
+      <form>
+        <input class="col-md-12 main-search searchPlacesTextField" name='address' placeholder="Search Cities and Neighborhoods">
+        <input type='submit' value='Search' class="btn btn-primary major-callout white main-search-btn" />
+      </form>
     </div>
   </div>
 
