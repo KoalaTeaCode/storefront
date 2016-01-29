@@ -137,6 +137,44 @@
           width: 200px;
           font-size: 18px;
         }
+
+        /* Filters */
+        .mobile-filters {
+          position: fixed;
+          z-index: 1900;
+          top: 0;
+          height: 100%;
+        }
+
+        .show-filter-button {
+          position: fixed;
+          z-index: 2000;
+          bottom: 25px;
+          right: 25px;
+          display: none;
+        }
+
+        p.navbar-text {
+          margin-top: 7px;
+        }
+
+        /* Filters */
+        .home-filters ul {
+          list-style-type: none;
+        }
+
+        .home-filters .filter-wrap {
+          width: 150px;
+          float: left;
+          text-align: center;
+        }
+
+        .home-filters .filter-item {
+          background-color: #edefed;
+          border: 1px solid #dce0e0;
+          padding: 5px;
+          margin: 5px 5px;
+        }
     </style>
 </head>
 <body id="app-layout">

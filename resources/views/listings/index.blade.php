@@ -16,6 +16,8 @@
     </div>
   </div>
 
+  @include('listings.filters')
+
   <div class="container cards">
     <div class="row">
       <div class="card-group">
