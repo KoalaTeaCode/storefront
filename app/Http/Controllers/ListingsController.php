@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Listing;
+use App\Review;
 use Geocoder;
 
 class ListingsController extends Controller
@@ -93,6 +94,32 @@ class ListingsController extends Controller
     $listing->save();
 
     // flash()->success("Updated", "Your oganization was updated!");
+
+    return redirect("/listings/$listing->id");
+  }
+
+  public function getReview(Request $request, $id) {
+
+    $listing = Listing::find($id);
+
+    return view('listings.review', compact('listing'));
+  }
+
+  public function postReview(Request $request, $id) {
+
+    $listing = Listing::find($id);
+
+    $score = $request->get('score');
+    $desc = $request->get('description');
+
+    $review = new Review();
+    //@TODO: Move this to constructor
+    $review->item_reviewed_id = $listing->id;
+    $review->item_reviewed_type = 'listing';
+    $review->user_id = $this->user->id;
+    $review->score = $score;
+    $review->description = $desc;
+    $review->save();
 
     return redirect("/listings/$listing->id");
   }

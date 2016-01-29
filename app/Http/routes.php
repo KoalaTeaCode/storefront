@@ -36,8 +36,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    
+
+    Route::get('listings/{listingId}/review', 'ListingsController@getReview');
+    Route::post('listings/{listingId}/review', 'ListingsController@postReview');
     Route::resource('listings', 'ListingsController');
+
     Route::resource('reservations', 'ReservationsController');
 
     Route::get('/home', 'HomeController@index');

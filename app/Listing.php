@@ -52,4 +52,10 @@ class Listing extends Model
     return DB::raw("SELECT ST_AsText(coords) FROM listings where id = '$this->id'");
   }
 
+  /* Relations */
+  public function reviews()
+  {
+    return $this->hasMany(Review::class, 'item_reviewed_id');
+  }
+
 }

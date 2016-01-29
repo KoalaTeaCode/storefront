@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Review;
+
 class User extends Authenticatable
 {
     /**
@@ -27,5 +29,11 @@ class User extends Authenticatable
     public function owns($object)
     {
       return $this->id == $object->user_id;
+    }
+
+    /* Relations */
+    public function reviews()
+    {
+      return $this->hasMany(Review::class, 'user_id');
     }
 }
