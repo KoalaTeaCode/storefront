@@ -13,6 +13,13 @@ use Geocoder;
 class ListingsController extends Controller
 {
 
+  public function __construct()
+  {
+    $this->middleware('auth', ['except' => ['show', 'index']]);
+
+    parent::__construct();
+  }
+
   public function index(Request $request) {
     $listings = Listing::all();
 
@@ -48,7 +55,7 @@ class ListingsController extends Controller
   public function store(Request $request) {
     $listing = new Listing($request->all());
 
-    // $opportunity->user_id = $this->user->id;
+    $listing->user_id = $this->user->id;
 
     //@TODO: Make sure address is required
     $listing->setAddress($request->get('address'));
@@ -56,6 +63,36 @@ class ListingsController extends Controller
     $listing->save();
 
     // flash()->success("Created", "Your oganization was created!");
+
+    return redirect("/listings/$listing->id");
+  }
+
+  public function edit($listingId) {
+
+    $listing = Listing::find($listingId);
+
+    if (!$this->user->owns($listing)) {
+      return "Access Denied";
+    }
+
+    return view('listings.edit', compact('listing'));
+  }
+
+  public function update(Request $request, $id) {
+    $listing = Listing::find($id);
+
+    if (!$this->user->owns($listing)) {
+      // flash()->error("Access Denied", "You must have permission to edit this org!");
+      return redirect("/listings/$listing->id");
+    }
+
+    //@TODO: Easy way to add more fields?
+    // @TODO: Update coords
+    $listing->title         = $request->get('title');
+    $listing->address  = $request->get('address');
+    $listing->save();
+
+    // flash()->success("Updated", "Your oganization was updated!");
 
     return redirect("/listings/$listing->id");
   }

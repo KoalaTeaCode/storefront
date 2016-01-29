@@ -82,4 +82,27 @@ class ListingControllerTest extends TestCase
         ->press('Search')
         ->dontSee($listings[0]->title);
     }
+
+
+    /**
+     * A basic test example.
+     *
+     * @test
+     * @return void
+     */
+    public function itPreventsNonOwnerFromEditing()
+    {
+      //Assuming we have a listing
+      $listing = factory(Listing::class)->create();
+
+      //A user who did not create, cannot view the edit page
+      $user = factory(User::class)->create();
+
+      $this->actingAs($user)
+        ->visit("/listings/$listing->id/edit")
+        ->see('Access Denied')
+        ->seePageIs("/listings/$listing->id");
+
+      //Or send a post request to the store route
+    }
 }
