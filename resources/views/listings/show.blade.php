@@ -82,6 +82,18 @@
             </div>
           {!! Form::close() !!}
         </div>
+
+        <div class='col-md-12'>
+          {!! Form::open(array(
+            'url' => "/listings/$listing->id/favorite",
+            'class' => 'form',
+            'method' => 'POST'
+          )) !!}
+          <div class="form-group col-md-12 text-center">
+            <button type="submit" class="btn btn-primary">Favorite</button>
+          </div>
+          {!! Form::close() !!}
+        </div>
       </div>
 
     </div>

@@ -58,4 +58,9 @@ class Listing extends Model
     return $this->hasMany(Review::class, 'item_reviewed_id');
   }
 
+  public function reservations()
+  {
+    return $this->hasMany(Reservation::class, 'listing_id');
+  }
+
 }

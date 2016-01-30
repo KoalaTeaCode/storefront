@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Listing;
 use App\Review;
+use App\Favorite;
 use Geocoder;
 
 class ListingsController extends Controller
@@ -120,6 +121,19 @@ class ListingsController extends Controller
     $review->score = $score;
     $review->description = $desc;
     $review->save();
+
+    return redirect("/listings/$listing->id");
+  }
+
+  public function postFavorite($id) {
+    $listing = Listing::find($id);
+
+    //@TODO: Move this to constructor
+    $favorite = new Favorite();
+    $favorite->item_favorited_id = $listing->id;
+    $favorite->item_favortied_type = 'listing';
+    $favorite->user_id = $this->user->id;
+    $favorite->save();
 
     return redirect("/listings/$listing->id");
   }

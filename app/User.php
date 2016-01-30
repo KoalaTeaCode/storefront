@@ -31,9 +31,24 @@ class User extends Authenticatable
       return $this->id == $object->user_id;
     }
 
+    public function reserveListing($listing, $startDate, $endDate)
+    {
+      $reservation = new Reservation();
+      $reservation->start_date = $startDate;
+      $reservation->end_date = $endDate;
+      $reservation->user_id = $this->id;
+      $reservation->listing_id = $listing->id;
+      $reservation->save();
+    }
+
     /* Relations */
     public function reviews()
     {
       return $this->hasMany(Review::class, 'user_id');
+    }
+
+    public function reservations()
+    {
+      return $this->hasMany(Reservation::class, 'user_id');
     }
 }
