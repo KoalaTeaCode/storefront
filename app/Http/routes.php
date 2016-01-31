@@ -40,6 +40,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('listings/{listingId}/review', 'ListingsController@getReview');
     Route::post('listings/{listingId}/review', 'ListingsController@postReview');
     Route::post('listings/{listingId}/favorite', 'ListingsController@postFavorite');
+    Route::post('listings/{listingId}/reserve', 'ListingsController@reserve');
     Route::resource('listings', 'ListingsController');
 
     Route::resource('reservations', 'ReservationsController');

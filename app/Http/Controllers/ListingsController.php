@@ -47,7 +47,12 @@ class ListingsController extends Controller
   public function show($listingId) {
     $listing = Listing::find($listingId);
 
-    return view('listings.show', compact('listing'));
+    //@TODO: filter our old reservations
+    $userReservations = $listing->reservations()
+      ->where('user_id', '=', $this->user->id)
+      ->get();
+
+    return view('listings.show', compact('listing', 'userReservations'));
   }
 
   public function create() {
@@ -134,6 +139,18 @@ class ListingsController extends Controller
     $favorite->item_favortied_type = 'listing';
     $favorite->user_id = $this->user->id;
     $favorite->save();
+
+    return redirect("/listings/$listing->id");
+  }
+
+  public function reserve(Request $request, $id) {
+    $listing = Listing::find($id);
+    //@TODO: Make dates requred
+
+    $startDate = new \DateTime($request->get('start_date'));
+    $endDate = new \DateTime($request->get('end_date'));
+
+    $this->user->reserveListing($listing, $startDate, $endDate);
 
     return redirect("/listings/$listing->id");
   }

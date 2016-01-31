@@ -61,20 +61,20 @@
       <div class="col-md-4 reservation-form" style="height:150px;">
         <div class="white-background" style="height:100%;padding:20px;">
             {!! Form::open(array(
-              'url' => '/reservations',
+              'url' => "/listings/$listing->id/reserve",
               'class' => 'form',
               'method' => 'POST'
             )) !!}
 
             {{ csrf_field() }}
             <div class="form-group col-md-6">
-              <label for="available_start_date">Start Date:</label>
-              {!! Form::date('available_start_date', null, array('class' => 'form-control')); !!}
+              <label for="start_date">Start Date:</label>
+              {!! Form::date('start_date', null, array('class' => 'form-control')); !!}
             </div>
 
             <div class="form-group col-md-6">
-              <label for="available_end_date">End Date:</label>
-              {!! Form::date('available_end_date', null, array('class' => 'form-control')); !!}
+              <label for="end_date">End Date:</label>
+              {!! Form::date('end_date', null, array('class' => 'form-control')); !!}
             </div>
 
             <div class="form-group col-md-12 text-center">
@@ -94,10 +94,16 @@
           </div>
           {!! Form::close() !!}
         </div>
+
+        @if ($userReservations)
+        <div class='col-md-12'>
+          @foreach($userReservations as $userReservation)
+            <div>{{ $userReservation->start_date }} : {{ $userReservation->end_date }}</div>
+          @endforeach
+        </div>
+        @endif
       </div>
-
     </div>
-
 </div>
 
 {{-- <div class="container">
