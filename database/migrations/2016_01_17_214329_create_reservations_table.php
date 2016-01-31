@@ -19,6 +19,7 @@ class CreateReservationsTable extends Migration
         $table->integer('payment_amount');
         $table->date('start_date');
         $table->date('end_date');
+        $table->boolean('cancelled')->default(false);
         // @TODO: Recurring?
         $table->timestamps();
       });

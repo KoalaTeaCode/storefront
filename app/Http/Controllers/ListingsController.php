@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Listing;
 use App\Review;
 use App\Favorite;
+use App\Reservation;
 use Geocoder;
 
 class ListingsController extends Controller
@@ -153,6 +154,15 @@ class ListingsController extends Controller
     $this->user->reserveListing($listing, $startDate, $endDate);
 
     return redirect("/listings/$listing->id");
+  }
+
+  public function cancelReservation(Request $request, $id)
+  {
+    //@TODO: Move this to reservation controller?
+    $reservation = Reservation::find($id);
+    $reservation->cancel();
+
+    return redirect()->back();
   }
 
 }

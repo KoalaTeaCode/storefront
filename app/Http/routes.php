@@ -41,6 +41,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('listings/{listingId}/review', 'ListingsController@postReview');
     Route::post('listings/{listingId}/favorite', 'ListingsController@postFavorite');
     Route::post('listings/{listingId}/reserve', 'ListingsController@reserve');
+    //@TODO: This route seems to have a bad name
+    Route::post('listings/{reservationId}/cancel', 'ListingsController@cancelReservation');
     Route::resource('listings', 'ListingsController');
 
     Route::resource('reservations', 'ReservationsController');

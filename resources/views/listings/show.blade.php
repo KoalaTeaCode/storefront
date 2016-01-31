@@ -98,7 +98,19 @@
         @if ($userReservations)
         <div class='col-md-12'>
           @foreach($userReservations as $userReservation)
-            <div>{{ $userReservation->start_date }} : {{ $userReservation->end_date }}</div>
+            <div>
+              {{ $userReservation->start_date }} : {{ $userReservation->end_date }}
+              {{ $userReservation->cancelled }}
+              {!! Form::open(array(
+                'url' => "/listings/$userReservation->id/cancel",
+                'class' => 'form',
+                'method' => 'POST'
+              )) !!}
+              <div class="form-group col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">Cancel</button>
+              </div>
+              {!! Form::close() !!}
+            </div>
           @endforeach
         </div>
         @endif

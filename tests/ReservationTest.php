@@ -51,6 +51,33 @@ class ReservationTest extends TestCase {
   //@TODO: Cannot reserve twice
   //@TODO: Validate dates and that they are future
 
+  /**
+   * @test
+   * A basic functional test example.
+   *
+   * @return void
+   */
+  public function it_allows_user_to_cancel_reservation() {
+
+    $user = factory(User::class)->create();
+
+    $listing = factory(Listing::class)->create();
+
+    $startDate = new DateTime();
+    $endDate = $startDate->add(new DateInterval('P10D'));
+
+    $user->reserveListing($listing, $startDate, $endDate);
+
+    $userReservation = $user->reservations()
+      ->where('listing_id', '=', $listing->id)
+      ->where('start_date', '=', $startDate->format('Y-m-d'))
+      ->where('end_date', '=', $endDate->format('Y-m-d'))
+      ->first();
+
+    $userReservation->cancel();
+
+    $this->assertEquals($userReservation->cancelled, true);
+  }
 }
 
  ?>
