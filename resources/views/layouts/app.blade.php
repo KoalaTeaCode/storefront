@@ -232,6 +232,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmQltXjoQ5Sh-eSkSMCQM1is_tk9cwfBM&libraries=places"></script>
     <script src="/js/main.js" ></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>

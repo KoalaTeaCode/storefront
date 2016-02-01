@@ -49,9 +49,13 @@ class ListingsController extends Controller
     $listing = Listing::find($listingId);
 
     //@TODO: filter our old reservations
-    $userReservations = $listing->reservations()
-      ->where('user_id', '=', $this->user->id)
-      ->get();
+    $userReservations = array();
+    if (isset($this->user)) {
+      $userReservations = $listing->reservations()
+        ->where('user_id', '=', $this->user->id)
+        ->get();
+    }
+
 
     return view('listings.show', compact('listing', 'userReservations'));
   }
@@ -152,6 +156,13 @@ class ListingsController extends Controller
     $endDate = new \DateTime($request->get('end_date'));
 
     $this->user->reserveListing($listing, $startDate, $endDate);
+
+    //@TODO: Should this be in the user function?
+    $token = $request->get('stripeToken');
+    $this->user->charge(100, [
+      'source' => $token,
+      'receipt_email' => $this->user->email,
+    ]);
 
     return redirect("/listings/$listing->id");
   }

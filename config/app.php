@@ -158,6 +158,7 @@ return [
 
         'Collective\Html\HtmlServiceProvider',
         'Toin0u\Geocoder\GeocoderServiceProvider',
+        'Laravel\Cashier\CashierServiceProvider',
 
     ],
 
