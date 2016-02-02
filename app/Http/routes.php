@@ -47,5 +47,5 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('reservations', 'ReservationsController');
 
-    Route::get('/home', 'HomeController@index');
+    // Route::get('/home', 'HomeController@index');
 });

@@ -125,6 +125,12 @@
           color: #fff !important;
         }
 
+        .btn-home:hover {
+          background: teal !important;
+          color: #fff !important;
+          opacity: 0.8;
+        }
+
         .main-search {
           padding: 15px;
           border-radius: 5px;
@@ -174,6 +180,11 @@
           border: 1px solid #dce0e0;
           padding: 5px;
           margin: 5px 5px;
+        }
+
+        /* Login/Logout */
+        .main-form-panel {
+          margin-top: 20px;
         }
     </style>
 </head>
