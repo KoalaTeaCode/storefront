@@ -19,6 +19,7 @@ class CreateListingsTable extends Migration
           $table->string('address');
           $table->string('type');
           $table->string('event_type_accommodations');
+          $table->string('space_type');
           $table->text('features');
           $table->string('size');
           $table->string('minium_lease_days');

@@ -93,6 +93,15 @@ class ListingsController extends Controller
     //@TODO: Make sure address is required
     $listing->setAddress($request->get('address'));
 
+    //@TODO: Is this the best way to store arrays? Think about future where quries
+    $eventAccomodations = $request->get('event_type_accommodations');
+    $eventAccomodations = implode(', ', $eventAccomodations);
+    $listing->event_type_accommodations = $eventAccomodations;
+
+    $features = $request->get('features');
+    $features = implode(', ', $features);
+    $listing->features = $features;
+
     $listing->save();
 
     // flash()->success("Created", "Your oganization was created!");
