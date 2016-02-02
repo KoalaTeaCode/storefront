@@ -16,15 +16,19 @@ use Geocoder;
 class ListingsController extends Controller
 {
 
-  public function __construct()
+  protected $listings;
+
+  public function __construct(Listing $listings)
   {
     $this->middleware('auth', ['except' => ['show', 'index']]);
+
+    $this->listings = $listings;
 
     parent::__construct();
   }
 
   public function index(Request $request) {
-    $listings = Listing::all();
+    $listings = $this->listings;
 
     $address = $request->get('address');
     if (isset($address) && !empty($address)) {
@@ -39,14 +43,25 @@ class ListingsController extends Controller
       }
 
       $listings = Listing::distance($distance, $latitude . ", " . $longitude);
-      $listings = $listings->get();
     }
 
     $eventType = $request->get('eventType');
     if (isset($eventType) && !empty($eventType)) {
-      $listings = Listing::where('event_type_accommodations', '=', $eventType)->get();
+      $listings = $listings->where('event_type_accommodations', '=', $eventType);
     }
 
+    //@TODO: We need to add this to model, I believe.
+    // $spaceType = $request->get('spaceType');
+    // if (isset($spaceType) && !empty($spaceType)) {
+    //   $listings = $listings->where('event_type_accommodations', '=', $spaceType)->get();
+    // }
+
+    $features = $request->get('features');
+    if (isset($features) && !empty($features)) {
+      $listings = $listings->where('features', '=', $features);
+    }
+
+    $listings = $listings->get();
 
     return view('listings.index', compact('listings'));
   }

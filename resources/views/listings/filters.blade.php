@@ -33,52 +33,61 @@
         </div>
       </div>
 
-      <div class="col-md-12 col-xs-12 well">
-        <div class="col-md-2 filter-label">Event Type: </div>
-        <div class="col-md-8">
-          <form>
-          @foreach(array('Retail Event', "Art Exhibit", "Food Event", "Business Event") as $filter)
-          <div class="filter-wrap">
-            <div class="filter-item">
-              {{$filter}}
-              <span><input name=eventType type="checkbox" value="{{$filter}}" /></span>
-            </div>
-          </div>
-          @endforeach
-            <input type='submit' value='submit' />
-          </form>
-        </div>
+      <div class="col-md-12 col-xs-12 text-center">
+        <button style="margin:10px;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#moreFilters" aria-expanded="false" aria-controls="collapseExample">
+          More Filters
+        </button>
       </div>
 
-      <div class="col-md-12 col-xs-12 well">
-        <div class="col-md-2 filter-label">Space Types: </div>
-        <div class="col-md-8">
-          @foreach(array('New', "Popular") as $filter)
-          <div class="filter-wrap">
-            <div class="filter-item">
-              {{$filter}}
-              <span><input type="checkbox" /></span>
-            </div>
-          </div>
-          @endforeach
-        </div>
-      </div>
+      <div class='collapse' id="moreFilters">
+        <form>
 
-      <div class="col-md-12 col-xs-12 well">
-        <div class="col-md-2 filter-label">Listing Features: </div>
-        <div class="col-md-8">
-          @foreach(array('New', "Popular") as $filter)
-          <div class="filter-wrap">
-            <div class="filter-item">
-              {{$filter}}
-              <span><input type="checkbox" /></span>
+        <div class="col-md-12 col-xs-12 well" >
+          <div class="col-md-2 filter-label">Event Type: </div>
+          <div class="col-md-8">
+            @foreach(array('Retail Event', "Art Exhibit", "Food Event", "Business Event") as $filter)
+            <div class="filter-wrap">
+              <div class="filter-item">
+                {{$filter}}
+                <span><input type="checkbox" name=eventType value="{{$filter}}" /></span>
+              </div>
             </div>
+            @endforeach
           </div>
-          @endforeach
         </div>
-      </div>
 
-    </div><!-- /.navbar-collapse -->
+        <div class="col-md-12 col-xs-12 well">
+          <div class="col-md-2 filter-label">Space Types: </div>
+          <div class="col-md-8">
+            @foreach(array("Shared Space", "Boutique/Store", "Art Gallery", "Restaurant or Cafe", "Event Venue") as $filter)
+            <div class="filter-wrap">
+              <div class="filter-item">
+                {{$filter}}
+                <span><input type="checkbox" name='spaceType' value='{{$filter}}' /></span>
+              </div>
+            </div>
+            @endforeach
+          </div>
+        </div>
+
+        <div class="col-md-12 col-xs-12 well">
+          <div class="col-md-2 filter-label">Listing Features: </div>
+          <div class="col-md-8">
+            @foreach(array('Wifi', "Handicap Accessbile", "Parking", "Electricty") as $filter)
+            <div class="filter-wrap">
+              <div class="filter-item">
+                {{$filter}}
+                <span><input type="checkbox" name='features' value='{{$filter}}' /></span>
+              </div>
+            </div>
+            @endforeach
+          </div>
+        </div>
+
+          <input type='submit' value='submit' />
+        </form>
+      </div>
+    </div>
   </div>
 </nav>
 <div class="show-filter-button btn btn-primary purple-inverse">Show Filters</div>
