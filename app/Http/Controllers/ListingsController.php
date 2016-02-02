@@ -42,6 +42,12 @@ class ListingsController extends Controller
       $listings = $listings->get();
     }
 
+    $eventType = $request->get('eventType');
+    if (isset($eventType) && !empty($eventType)) {
+      $listings = Listing::where('event_type_accommodations', '=', $eventType)->get();
+    }
+
+
     return view('listings.index', compact('listings'));
   }
 
