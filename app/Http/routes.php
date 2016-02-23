@@ -37,6 +37,8 @@ Route::group(['middleware' => 'web'], function () {
         return view('welcome');
     });
 
+    Route::get('listings/matcher', 'ListingsController@matcher');
+
     Route::get('listings/{listingId}/review', 'ListingsController@getReview');
     Route::post('listings/{listingId}/review', 'ListingsController@postReview');
     Route::post('listings/{listingId}/favorite', 'ListingsController@postFavorite');

@@ -206,4 +206,9 @@ class ListingsController extends Controller
     return redirect()->back();
   }
 
+  public function matcher()
+  {
+    return view('listings.matcher');
+  }
+
 }
