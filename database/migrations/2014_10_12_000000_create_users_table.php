@@ -20,6 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('company');
             $table->string('website');
+            $table->string('facebook_token')->unique()->nullable();
+            $table->string('google_token')->unique()->nullable();
+            $table->string('linkedin_token')->unique()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

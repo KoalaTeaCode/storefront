@@ -23,19 +23,15 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-
-
-
-});
-
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-
 
     Route::get('/', function () {
         return view('welcome');
     });
+
+    route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
+    route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 
     Route::get('listings/matcher', 'ListingsController@matcher');
 

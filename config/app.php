@@ -159,7 +159,7 @@ return [
         'Collective\Html\HtmlServiceProvider',
         'Toin0u\Geocoder\GeocoderServiceProvider',
         'Laravel\Cashier\CashierServiceProvider',
-
+        'Laravel\Socialite\SocialiteServiceProvider',
     ],
 
     /*
@@ -209,6 +209,7 @@ return [
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
         'Geocoder' => 'Toin0u\Geocoder\Facade\Geocoder',
+        'Socialize' => 'Laravel\Socialite\Facades\Socialite',
     ],
 
 ];

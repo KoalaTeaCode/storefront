@@ -73,6 +73,21 @@
                                 </button>
                             </div>
                         </div>
+                        <hr>
+                        Or
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <a href="/auth/facebook" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-user"></i>Facebook
+                                </a>
+                                <a href="/auth/google" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-user"></i>Google
+                                </a>
+                                <a href="/auth/linkedin" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-user"></i>LinkedIn
+                                </a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

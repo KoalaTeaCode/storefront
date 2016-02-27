@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+use Auth;
+use Socialize;
+
 class AuthController extends Controller
 {
     /*
@@ -68,5 +71,50 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function redirectToProvider($provider)
+    {
+        return Socialize::with($provider)->redirect();
+    }
+
+    public function handleProviderCallback($provider)
+    {
+      $user = Socialize::with($provider)->user();
+      if ($user) {
+        // If user is logged in, then link the account
+        if ( Auth::check() ) {
+          dd($this->user);
+        } else if ( $laravelUser = User::where($provider.'_token', '=', $user->token)->first() ) {
+          // Check for a user with the token and login
+        } else if ($laravelUser = User::where('email', '=', $user->email)->first() ) {
+          // Check for a matching email, set the token, login
+          $laravelUser->{$provider.'_token'} = $user->token;
+          $laravelUser->save();
+        } else {
+          // Create an account, set email, set the token, login
+          $userDetails = array(
+            'name' => $user->name,
+            'password' => bcrypt('CHANGEME'),
+            // 'avatar' => $user->avatar,
+          );
+
+          $userDetails[$provider.'_token'] = $user->token;
+
+          $email = "";
+          if (isset($user->email)) {
+            $email = $user->email;
+            $userDetails['email'] = $user->email;
+          }
+
+          $laravelUser = User::create($userDetails);
+        }
+
+        Auth::login($laravelUser);
+        return redirect('/');
+
+      } else {
+        return 'something went wrong';
+      }
     }
 }
