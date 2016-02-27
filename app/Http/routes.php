@@ -34,7 +34,6 @@ Route::group(['middleware' => 'web'], function () {
     route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 
     Route::get('listings/matcher', 'ListingsController@matcher');
-
     Route::get('listings/{listingId}/review', 'ListingsController@getReview');
     Route::post('listings/{listingId}/review', 'ListingsController@postReview');
     Route::post('listings/{listingId}/favorite', 'ListingsController@postFavorite');
@@ -44,6 +43,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('listings', 'ListingsController');
 
     Route::resource('reservations', 'ReservationsController');
+
+    Route::get('/profile', "ProfileController@show");
+    Route::get('/profile/edit', "ProfileController@edit");
+    Route::put('/profile', "ProfileController@update");
 
     // Route::get('/home', 'HomeController@index');
 });
