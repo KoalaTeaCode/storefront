@@ -1,30 +1,22 @@
-<div class="row">
-  <div class="col-sm-8 col-sm-offset-2">
-      <div id="form-container">
-          <div class="page-header text-center">
-              <h2>Let's Be Friends</h2>
-
-              <!-- the links to our nested states using relative paths -->
-              <!-- add the active class if the state matches our ui-sref -->
-              <div id="status-buttons" class="text-center">
-                  <a ui-sref-active="active" ui-sref=".profile"><span>1</span> Profile</a>
-                  <a ui-sref-active="active" ui-sref=".interests"><span>2</span> Interests</a>
-                  <a ui-sref-active="active" ui-sref=".payment"><span>3</span> Payment</a>
-              </div>
-          </div>
-
-          <!-- use ng-submit to catch the form submission and use our Angular function -->
-          <form id="signup-form" ng-submit="processForm()">
-
-              <!-- our nested state views will be injected here -->
-              <div id="form-views" ui-view></div>
-          </form>
-
-      </div>
-
-      <!-- show our formData as it is being typed -->
-      <pre>
-          {{ formData }}
-      </pre>
+<div class="background-image" role="decoration" ></div>
+<div class="overlay" role="decoration" ></div>
+<div id="form-container">
+  <div class="page-header text-center">
+    <h2>Find a Space</h2>
+    <div id="status-buttons" class="text-center">
+      <a ui-sref-active="active" ui-sref=".location"><span>1</span> Location</a>
+      <a ui-sref-active="active" ui-sref=".event-length"><span>2</span> Event Length</a>
+      <a ui-sref-active="active" ui-sref=".event-type"><span>3</span> Event Type</a>
+      <a ui-sref-active="active" ui-sref=".space-type"><span>4</span> Space Type</a>
+      <a ui-sref-active="active" ui-sref=".features"><span>5</span> Features</a>
+      <a ui-sref-active="active" ui-sref=".budget"><span>6</span> Budget</a>
+    </div>
   </div>
+  <form id="signup-form" ng-submit="processForm()">
+    <div id="form-views" ui-view></div>
+  </form>
 </div>
+
+<pre>
+  {{ formData }}
+</pre>

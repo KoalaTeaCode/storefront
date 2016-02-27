@@ -18,8 +18,9 @@
       @foreach(array('Retail Event', "Art Exhibit", "Food Event", "Business Event") as $filter)
       <div class="filter-wrap">
         <div class="filter-item">
-          {{$filter}}
-          <span><input type="checkbox" name=event_type_accommodations[] value="{{$filter}}" /></span>
+          <label>
+            <input type="checkbox" name=formData.eventType.foodEvent value="{{$filter}}" /><span>{{$filter}}</span>
+          </label>
         </div>
       </div>
       @endforeach
@@ -31,8 +32,9 @@
       @foreach(array("Shared Space", "Boutique/Store", "Art Gallery", "Restaurant or Cafe", "Event Venue") as $filter)
       <div class="filter-wrap">
         <div class="filter-item">
-          {{$filter}}
-          <span><input type="checkbox" name='spaceType' value='{{$filter}}' /></span>
+          <label>
+            <input type="checkbox" name=spaceType value="{{$filter}}" /><span>{{$filter}}</span>
+          </label>
         </div>
       </div>
       @endforeach
@@ -44,8 +46,9 @@
       @foreach(array('Wifi', "Handicap Accessbile", "Parking", "Electricty") as $filter)
       <div class="filter-wrap">
         <div class="filter-item">
-          {{$filter}}
-          <span><input type="checkbox" name='features[]' value='{{$filter}}' /></span>
+          <label>
+            <input type="checkbox" name=features[] value="{{$filter}}" /><span>{{$filter}}</span>
+          </label>
         </div>
       </div>
       @endforeach

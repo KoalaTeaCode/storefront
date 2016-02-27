@@ -1,0 +1,42 @@
+<div class="form-group row">
+  <div class="col-xs-6 col-xs-offset-3 text-center">
+    <h3 for="budget">Budget:</h3>
+    <div class="filter-wrap">
+      <div class="filter-item">
+        <label>
+          <input type="checkbox" name="formData.budget.wifi" ng-model="formData.budget.wifi" value="Wifi"><span>Less than $500</span>
+        </label>
+      </div>
+    </div>
+    <div class="filter-wrap">
+      <div class="filter-item">
+        <label>
+          <input type="checkbox" name="formData.budget.handicapAccessible" ng-model="formData.budget.handicapAccessible" value="Handicap Accessbile"><span>$500-$1000</span>
+        </label>
+      </div>
+    </div>
+    <div class="filter-wrap">
+      <div class="filter-item">
+        <label>
+          <input type="checkbox" name="formData.budget.parking" ng-model="formData.budget.parking" value="Parking"><span>$1000-$3000</span>
+        </label>
+      </div>
+    </div>
+    <div class="filter-wrap">
+      <div class="filter-item">
+        <label>
+          <input type="checkbox" name="formData.budget.electricity" ng-model="formData.budget.electricity" value="Electricty"><span>$3000-$10000</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <input type="submit" value="submit" class="btn btn-block btn-info" />
+    <!-- <a href="/listings" class="btn btn-block btn-info">
+      Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a> -->
+  </div>
+</div>

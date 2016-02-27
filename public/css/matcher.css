@@ -1,0 +1,145 @@
+/* form styling */
+#form-container  {
+    /*background:#2f2f2f;*/
+    background: transparent;
+    /*background-image: url("https://cdn.evbstatic.com/s3-build/perm_001/8218f5/django/images/home/banners/homepage_hero_banner_1.jpg");*/
+    margin-bottom:20px;
+    border-radius:5px;
+    position: relative;
+}
+
+#form-container h3, #form-container label {
+  color: #fff;
+}
+
+#form-container .page-header {
+  border: none;
+}
+
+.background-image {
+  background-image: url("https://cdn.evbstatic.com/s3-build/perm_001/8218f5/django/images/home/banners/homepage_hero_banner_1.jpg");
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: #444;
+  opacity: 0.6;
+}
+#form-container .page-header   {
+  /*background:#151515; */
+  margin:0;
+  padding:30px;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  color: #fff;
+}
+
+/* numbered buttons */
+#status-buttons                 {  }
+#status-buttons a               { color:#FFF; display:inline-block; font-size:12px; margin-right:10px; text-align:center; text-transform:uppercase; }
+#status-buttons a:hover         { text-decoration:none; }
+
+/* we will style the span as the circled number */
+#status-buttons span            { background:#080808; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px;
+    border-radius:50%; }
+
+/* active buttons turn light green-blue*/
+#status-buttons a.active span   { background:#00BC8C; }
+
+#signup-form            { position:relative; min-height:300px; overflow:hidden; padding:30px; }
+#form-views             { width:auto; }
+
+/* basic styling for entering and leaving */
+/* left and right added to ensure full width */
+#form-views.ng-enter,
+#form-views.ng-leave      { position:absolute; left:30px; right:30px;
+    transition:0.5s all ease; -moz-transition:0.5s all ease; -webkit-transition:0.5s all ease;
+}
+
+/* enter animation */
+#form-views.ng-enter            {
+    -webkit-animation:slideInRight 0.5s both ease;
+    -moz-animation:slideInRight 0.5s both ease;
+    animation:slideInRight 0.5s both ease;
+}
+
+/* leave animation */
+#form-views.ng-leave            {
+    -webkit-animation:slideOutLeft 0.5s both ease;
+    -moz-animation:slideOutLeft 0.5s both ease;
+    animation:slideOutLeft 0.5s both ease;
+}
+
+/* ANIMATIONS
+============================================================================= */
+/* slide out to the left */
+@keyframes slideOutLeft {
+    to      { transform: translateX(-200%); }
+}
+@-moz-keyframes slideOutLeft {
+    to      { -moz-transform: translateX(-200%); }
+}
+@-webkit-keyframes slideOutLeft {
+    to      { -webkit-transform: translateX(-200%); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+    from    { transform:translateX(200%); }
+    to      { transform: translateX(0); }
+}
+@-moz-keyframes slideInRight {
+    from    { -moz-transform:translateX(200%); }
+    to      { -moz-transform: translateX(0); }
+}
+@-webkit-keyframes slideInRight {
+    from    { -webkit-transform:translateX(200%); }
+    to      { -webkit-transform: translateX(0); }
+}
+
+/* Buttons */
+.filter-item {
+    margin:4px;
+    background-color:#080808;
+    border-radius:4px;
+    border:1px solid #080808;
+    overflow:auto;
+    float:left;
+    padding: 5px;
+}
+
+.filter-item:hover, .filter-item label:hover {
+  background: #00BC8C;
+  border:1px solid #00BC8C;
+  color: #fff;
+  cursor: pointer;
+}
+
+.filter-item label {
+    float:left;
+    width:4.0em;
+}
+
+.filter-item label span {
+    text-align:center;
+    padding:3px 0px;
+    display:block;
+}
+
+.filter-item label input {
+    position:absolute;
+    top:-20px;
+    visibility: hidden;
+}
+
+.filter-item input:checked + span {
+    background-color:#00BC8C;
+    color:#fff;
+}
