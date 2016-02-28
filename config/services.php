@@ -38,18 +38,18 @@ return [
     'facebook' => [
       'client_id' => '1561782147447245',
       'client_secret' => '1a1e1ce668315c1ce88037dea17b5b31',
-      'redirect' => 'http://popupcrm.givvir.com/auth/facebook/callback',
+      'redirect' => 'http://popcre.com/auth/facebook/callback',
     ],
 
     'google' => [
       'client_id' => '335889975103-4vn3ou2mcr3ibdls0opkpag6rqa4oah1.apps.googleusercontent.com',
       'client_secret' => 'T2lv6yyE7s5eUoMGO-EgbGF4',
-      'redirect' => 'http://popupcrm.givvir.com/auth/google/callback',
+      'redirect' => 'http://popcre.com/auth/google/callback',
     ],
 
     'linkedin' => [
       'client_id' => '78ta2ej8q7mxvl',
       'client_secret' => 'AvZ94C1XFUFTwe3r',
-      'redirect' => 'http://popupcrm.givvir.com/auth/linkedin/callback',
+      'redirect' => 'http://popcre.com/auth/linkedin/callback',
     ],
 ];
