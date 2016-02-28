@@ -1,6 +1,6 @@
-<div class="background-image" role="decoration" ></div>
-<div class="overlay" role="decoration" ></div>
-<div id="form-container">
+<div id="form-container" ng-show="view === 'questionairre'">
+  <div class="background-image" role="decoration" ></div>
+  <div class="overlay" role="decoration" ></div>
   <div class="page-header text-center">
     <h2>Find a Space</h2>
     <div id="status-buttons" class="text-center">
@@ -17,6 +17,62 @@
   </form>
 </div>
 
-<pre>
-  {{ formData }}
-</pre>
+<div id="listing-selection" ng-show="view === 'listingSelect'">
+  <div class="row listing-row">
+   <div class="col-xs-12 col-md-12 col-table-cell col-md-left col-listing-content">
+      <div class="row">
+         <div class="gallery-container col-md-8 col-md-offset-3">
+            <div class="gallery-scroller">
+               <div class="active gallery-item" data-index="0" style="width: 620px;">
+                  <img alt="Haven Lake Highlands - 7077 Watercrest Pkwy, Dallas, TX 75214" class="gallery-img" data-index="0" data-src="https://res-3.cloudinary.com/apartmentlist/image/upload/t_r_fp_dream_ldp_msg/438552f11281abe85ecd29de0583a560.jpg" src="https://res-3.cloudinary.com/apartmentlist/image/upload/t_r_fp_dream_ldp_msg/438552f11281abe85ecd29de0583a560.jpg">
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="row">
+        <div class="text-center">
+          <h2>{{listings[index].title}}</h2>
+          <div class="address-banner">
+            <i class="al al-map-marker"></i>
+            {{listings[index].address}}
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="interest-actions col-md-12 text-center">
+
+          <button class="btn btn-primary" ng-click="removeListing()">
+            <i class="al al-arrow-right"></i>
+            <span class="btn-cta-text">Hate it</span>
+          </button>
+
+          <button class="btn btn-primary" ng-click="saveAnKeepLooking()">
+            <i class="al al-location-arrow"></i>
+            <span class="btn-cta-text">Save it, and keep looking</span>
+          </button>
+
+          <a href="listings/{{listings[index].id}}" class="btn btn-primary" >
+            <span class="ladda-label">
+              <i class="al al-heart"></i>
+              <span class="btn-cta-text">Love it</span>
+            </span>
+          </a>
+
+          <br><br>
+
+          <button class="btn btn-primary" ng-hide="index == 0" ng-click="prev()" >
+            <i class="al al-location-arrow"></i>
+            <span class="btn-cta-text" >Prev</span>
+          </button>
+          <button class="btn btn-primary" ng-hide="index == listings.length - 1" ng-click="next()" >
+            <i class="al al-location-arrow"></i>
+            <span class="btn-cta-text">Next</span>
+          </button>
+        </div>
+      </div>
+
+   </div>
+  </div>
+</div>

@@ -20,7 +20,7 @@ class ListingsController extends Controller
 
   public function __construct(Listing $listings)
   {
-    $this->middleware('auth', ['except' => ['show', 'index']]);
+    $this->middleware('auth', ['except' => ['show', 'index', 'matcher']]);
 
     $this->listings = $listings;
 

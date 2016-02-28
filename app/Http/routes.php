@@ -23,17 +23,25 @@
 |
 */
 
+Route::group([
+  'namespace' => 'Api',
+  'prefix' => 'api'
+  ], function () {
+
+  Route::get('listings', 'ListingsController@index');
+
+});
+
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    Route::get('/', 'ListingsController@index');
 
     route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
     route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 
-    Route::get('listings/matcher', 'ListingsController@matcher');
+    Route::get('matcher', 'ListingsController@matcher');
+
     Route::get('listings/{listingId}/review', 'ListingsController@getReview');
     Route::post('listings/{listingId}/review', 'ListingsController@postReview');
     Route::post('listings/{listingId}/favorite', 'ListingsController@postFavorite');
