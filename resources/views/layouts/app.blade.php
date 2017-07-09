@@ -32,7 +32,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/listings') }}">
-                  PopupCRE
+                  PopCRE
                 </a>
             </div>
 

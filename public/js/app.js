@@ -29,6 +29,14 @@ angular.module('formApp', ['ngAnimate', 'ui.router'])
       .state('form.budget', {
           url: '/budget',
           templateUrl: '/partials/form-budget.html'
+      })
+      .state('form.listings', {
+          url: '/listings',
+          templateUrl: '/partials/listings.html',
+      })
+      .state('form.listing', {
+          url: '/listings/:id',
+          templateUrl: '/partials/listing.html'
       });
     $urlRouterProvider.otherwise('/form/location');
   })
